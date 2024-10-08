@@ -1,0 +1,7 @@
+matplotlib
+scipy
+numpy
+streamlit
+fastapi
+uvicorn
+pandas
