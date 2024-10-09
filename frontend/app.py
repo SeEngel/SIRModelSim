@@ -24,6 +24,13 @@ page = st.sidebar.radio("Go to", ["SIR System Simulation", "Noise on parameters"
 if page == "SIR System Simulation":
     # Streamlit app layout
     st.title("SIR System Simulation")
+    st.markdown("""
+    ```python
+    dSdt = mu * (N - S) - eta * k * I * S
+    dIdt = eta * k * I * S - (gamma + mu) * I
+    dRdt = gamma * I - mu * R
+    ```
+    """)
 
     # Input fields for SIR model parameters
     S0 = st.number_input("Initial susceptible population (S0)", value=0.99)
