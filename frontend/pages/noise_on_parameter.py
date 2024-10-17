@@ -6,6 +6,35 @@ import time
 import matplotlib.pyplot as plt
 from utils import simulate_with_noise_on_params
 
+
+st.markdown("# Simulation with Noise on Parameters")
+st.markdown("""
+```python
+dSdt = mu * (N - S) - eta * k * I * S
+dIdt = eta * k * I * S - (gamma + mu) * I
+dRdt = gamma * I - mu * R
+
+S(0) = S0
+I(0) = I0
+R(0) = R0
+
+simulation = z(parameter+noise)
+
+Noise model:
+
+noisy_params = {
+    "S0": np.random.normal(S0, noise_level * 0.1 * abs(S0)),
+    "I0": np.random.normal(I0, noise_level * 0.1 * abs(I0)),
+    "R0": np.random.normal(R0, noise_level * 0.1 * abs(R0)),
+    "muh": np.random.normal(muh, noise_level * 0.1 * abs(muh)),
+    "eta": np.random.normal(eta, noise_level * 0.1 * abs(eta)),
+    "gamma": np.random.normal(gamma, noise_level * 0.1 * abs(gamma)),
+    "N": round(np.random.normal(N, noise_level * 0.1 * abs(N))),
+    "k": np.random.normal(k, noise_level * 0.1 * abs(k)),
+}   
+```
+""")
+
 # Input fields for parameters
 S0 = st.number_input("Initial susceptible population (S0)", value=0.99)
 I0 = st.number_input("Initial infected population (I0)", value=0.01)

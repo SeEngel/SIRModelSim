@@ -5,3 +5,8 @@ streamlit
 fastapi
 uvicorn
 pandas
+xgboost
+scikit-learn
+torch
+torchvision
+torchaudio

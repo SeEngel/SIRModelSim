@@ -19,7 +19,7 @@ start_fastapi_service()
 
 # Navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["SIR System Simulation", "Noise on parameters"])
+page = st.sidebar.radio("Go to", ["SIR System Simulation", "Noise on parameters", "Noise on parameters reconstruction"])
 
 if page == "SIR System Simulation":
     # Streamlit app layout
@@ -36,7 +36,7 @@ if page == "SIR System Simulation":
     S0 = st.number_input("Initial susceptible population (S0)", value=0.99)
     I0 = st.number_input("Initial infected population (I0)", value=0.01)
     R0 = st.number_input("Initial recovered population (R0)", value=0.0)
-    muh = st.number_input("Birth and death rate (muh)", value=0.01)
+    muh = st.number_input("Birth and death rate (mu)", value=0.01)
     eta = st.number_input("Infection coefficient (eta)", value=0.1)
     gamma = st.number_input("Recovery rate (gamma)", value=0.05)
     N = st.number_input("Total population (N)", value=100)
@@ -101,4 +101,10 @@ elif page == "Noise on parameters":
     # Load the experiment page
     st.title("Noise on Parameters Page")
     path_experiments = os.path.join(os.path.dirname(__file__), "pages/noise_on_parameter.py")
+    exec(open(path_experiments).read())
+    
+elif page == "Noise on parameters reconstruction":
+    # Load the experiment page
+    st.title("Noise on Parameters Reconstruction Page")
+    path_experiments = os.path.join(os.path.dirname(__file__), "pages/noise_on_parameter_statistics.py")
     exec(open(path_experiments).read())
